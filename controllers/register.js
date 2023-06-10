@@ -1,4 +1,5 @@
 const handleRegister = (req, res, db, bcrypt) => {
+  console.log("entering register");
   const { email, name, password } = req.body;
   //   bcrypt.hash(password, 10, function (err, hash) {
   //     // Store hash in your password DB.
