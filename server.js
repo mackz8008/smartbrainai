@@ -22,7 +22,8 @@ const db = knex({
   },
 });
 
-console.log(db.select("*").from("users"));
+console.log("smb starting...");
+// console.log(db.select("*").from("users"));
 
 // console.log(
 //   db
@@ -34,6 +35,7 @@ console.log(db.select("*").from("users"));
 // );
 
 const app = express();
+const PORT = process.env.PORT || 3002;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
@@ -60,7 +62,7 @@ app.use(cors());
 // };
 
 app.get("/", (req, res) => {
-  //   res.send.json("this is working");
+  res.json("this is working");
   //   res.send(database.users);
 });
 
@@ -88,8 +90,8 @@ app.post("/imageurl", (req, res) => {
 
 // Load hash from your password DB.
 
-app.listen(3002, () => {
-  console.log("app is running on port 3002");
+app.listen(PORT, () => {
+  console.log(`app is running on port ${PORT}`);
 });
 
 /*
