@@ -1,7 +1,7 @@
 const Clarifai = require("clarifai");
 
 const app = new Clarifai.App({
-  apiKey: "cbed232564d34a06805122d75e32337a",
+  apiKey: process.env.API_CLARIFAI,
 });
 
 const handleApiCall = (req, res) => {
@@ -29,12 +29,12 @@ const handleApiCallNode = (req, res) => {
 
   // This will be used by every Clarifai endpoint call
   const metadata = new grpc.Metadata();
-  metadata.set("authorization", "Key " + "cbed232564d34a06805122d75e32337a");
+  metadata.set("authorization", "Key " + process.env.API_CLARIFAI);
 
   stub.PostModelOutputs(
     {
       user_app_id: {
-        user_id: "bobgoblin",
+        user_id: process.env.CLARIFAI_USERID,
         app_id: "face-recognition-test",
       },
       model_id: "face-detection",

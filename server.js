@@ -11,14 +11,13 @@ const image = require("./controllers/image");
 const db = knex({
   client: "pg",
   connection: {
-    connectionString:
-      "postgres://smart_brain_b5z1_user:be9MqlM436mb4LxUkBfNbETbPkYbV9Y0@dpg-ci1gjo67avjfjane7o90-a/smart_brain_b5z1",
+    connectionString: process.env.DATABASE_URL,
     // ssl: { rejectUnauthorized: false },
-    host: "dpg-ci1gjo67avjfjane7o90-a.oregon-postgres.render.com",
+    host: process.env.DATABASE_HOST,
     port: 5432,
-    user: "smart_brain_b5z1_user",
-    password: "be9MqlM436mb4LxUkBfNbETbPkYbV9Y0",
-    database: "smart_brain_b5z1",
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PWD,
+    database: process.env.DATABASE_DB,
   },
 });
 
@@ -39,27 +38,6 @@ const PORT = process.env.PORT || 3002;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
-
-// const database = {
-//   users: [
-//     {
-//       id: "123",
-//       name: "John",
-//       email: "john@test.com",
-//       password: "cookie",
-//       entries: 0,
-//       joined: new Date(),
-//     },
-//     {
-//       id: "124",
-//       name: "Sally",
-//       email: "sally@test.com",
-//       password: "banana",
-//       entries: 0,
-//       joined: new Date(),
-//     },
-//   ],
-// };
 
 app.get("/", (req, res) => {
   res.json("this is working");
@@ -93,11 +71,3 @@ app.post("/imageurl", (req, res) => {
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
 });
-
-/*
-/ --> res = thisis working
-/signin --> POST = success/fail
-/register --> POST = user
-/profile/:userId --> GET = user
-/image --> PUT --> user
-*/

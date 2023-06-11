@@ -26,20 +26,7 @@ const handleSignin = (db, bcrypt) => (req, res) => {
     })
     .catch((err) => res.status(400).json("wrong credentials"));
 
-  //   bcrypt.compare(
-  //     "apple",
-  //     "$2b$10$32TdV8xgb0G.XFn1V4M.ueWRGJVGLcAa1e/.SEOvhzbsQKKoXjzja",
-  //     function (err, res) {
-  //       console.log("first guess ", res);
-  //     }
-  //   );
-  //   bcrypt.compare(
-  //     "veggies",
-  //     "$2b$10$32TdV8xgb0G.XFn1V4M.ueWRGJVGLcAa1e/.SEOvhzbsQKKoXjzja",
-  //     function (err, res) {
-  //       console.log("second guess ", res);
-  //     }
-  //   );
+  //
 
   //   //   res.json("signin");
   //   if (
